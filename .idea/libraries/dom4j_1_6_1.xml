@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="dom4j-1.6.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ooxml-schemas-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/poi-3.9-20121203.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/poi-ooxml-3.9-20121203.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/stax-api-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/xmlbeans-2.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

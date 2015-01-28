@@ -1,0 +1,88 @@
+<idea-plugin version="2">
+    <id>com.mobility.bnpp.plugin.bnpptoolset</id>
+    <name>BNPP ToolSet</name>
+    <version>1.0</version>
+    <vendor email="saravana.th@tcs.com" url="http://www.tcs.com">TCS Mobility</vendor>
+
+    <description><![CDATA[
+    <br />
+      Contains a bunch of tools that is used as part of BNPP project development.<br />
+    <br />
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Obsolete MultiLang integrator from Excel documents has been added.<br />
+      Refactor renaming using regex is added to do batch renaming.<br />
+      Maven repository pusher is added to push artifact into the local m2 repository.<br />
+    <br /><br />
+    ]]>
+    </change-notes>
+
+    <idea-version since-build="131"/>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService id="mavenrepopusher.applicationService"
+                            serviceImplementation="javacode.mavenrepopusher.application.services.MavenRepoAppService"/>
+    </extensions>
+
+    <application-components>
+        <component>
+            <implementation-class>javacode.global.application.components.GlobalAppComponent</implementation-class>
+        </component>
+    </application-components>
+
+    <project-components>
+
+    </project-components>
+
+    <actions>
+
+        <!-- Action for MultiLangIntegrator from Excel documents. Now considered Obsolete -->
+        <action id="MultiLangIntegrate" class="javacode.multilangexcelparser.actions.MultiLangIntegrator"
+                text="Integrate Multi Lang..."
+                description="Integrates Multi Lang" icon="/icons/BNPPICON_16x16.png"/>
+
+        <!-- Action for TextFinder. This action will be later replaced, hopefully. Currently, this is a FILLER . TODO: Implement toolwindow UI once POC is over -->
+        <action id="TextFinder" class="javacode.textfinder.actions.TextFinder" text="Find Text"
+                description="Finds all usage of a variable"/>
+
+        <!-- Action for RegexRename. Refactor renaming based on regex -->
+        <action id="RegexRename" class="groovycode.regexrename.actions.RegexRename" text="Regex Rename..."
+                description="Batch refactors variables based on regular expression"/>
+
+        <!-- Action for MavenRepoPusher. Pushes artifacts to local Maven repository -->
+        <action id="MavenRepoPusher" class="groovycode.mavenrepopusher.actions.MavenRepoPusher"
+                text="Maven Repo Pusher..."
+                description="Pusher artifacts to local Maven repository"/>
+
+        <group id="bnpp.group.mainmenu" popup="true" text="BNPP"
+               description="Common Menu for all BNPP plugins">
+
+            <group id="bnpp.group.mainmenu.obsolete" text="Obsolete" popup="true"
+                   description="Contains all the obsolete plugins">
+                <reference ref="MultiLangIntegrate"/>
+            </group>
+
+            <group id="bnpp.group.mainmenu.refactor" text="Refactor" popup="true"
+                   description="Contains Refactor ACTIONS">
+                <reference ref="RegexRename"/>
+            </group>
+
+            <!--TODO: Add plugin-->
+            <!--
+            <group id="bnpp.group.mainmenu.temporary" text="Temporary" popup="true"
+                               description="Contains Temporary ACTIONS">
+                            <reference ref="TextFinder"/>
+                        </group>-->
+
+            <group id="bnpp.group.mainmenu.tasks" text="Tasks" popup="true"
+                   description="Contains General simple Tasks ACTIONS">
+                <reference ref="MavenRepoPusher"/>
+            </group>
+
+            <add-to-group group-id="MainMenu" anchor="before" relative-to-action="HelpMenu"/>
+
+        </group>
+    </actions>
+
+</idea-plugin>
